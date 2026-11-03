@@ -300,7 +300,7 @@
                 : (!voting ? "A votação está pausada." : "");
 
             setOptions($("voteCandidate"), rows
-                .filter((r) => r.known && r.codinome !== myName)
+                .filter((r) => r.known && r.codinome !== myName && r.codinome != PROFESSORA)
                 .map((r) => ({
                     value: r.codinome,
                     label: r.voted ? `${r.codinome} (já votou)` : r.codinome,
@@ -308,11 +308,11 @@
                 })));
 
             setOptions($("issueTarget"), rows
-                .filter((r) => r.known)
+                .filter((r) => r.known && r.codinome != PROFESSORA)
                 .map((r) => ({ value: r.codinome, label: r.codinome })));
 
             // Ranking
-            const sorted = [...rows].filter((r) => r.known).sort((a, b) =>
+            const sorted = [...rows].filter((r) => r.known && r.codinome != PROFESSORA).sort((a, b) =>
                 a.balance.gt(b.balance) ? -1 : (a.balance.lt(b.balance) ? 1 : 0));
             $("rankingTable").innerHTML = sorted.map((r) => `
                 <tr>

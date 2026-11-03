@@ -20,7 +20,7 @@ contract Turing is ERC20 {
 
     constructor() ERC20("Turing", "TTK") {
         owner = msg.sender;
-        _setUser('owner', msg.sender);
+        
         _setUser('roberta', 0x502542668aF09fa7aea52174b9965A7799343Df7);
         _setUser('nome1', 0x70997970C51812dc3A010C7d01b50e0d17dc79C8);
         _setUser('nome2', 0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC);
